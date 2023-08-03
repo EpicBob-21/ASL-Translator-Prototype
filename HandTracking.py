@@ -18,7 +18,7 @@ while True:
         centerPoint1=hand1["center"] #center of hand cx, cy
         handType1=hand1["type"] #left or right
         fingers1=detector.fingersUp(hand1)
-        print(fingers1)
+        print(lmList1)
 
     cv2.imshow("Image", img)
     cv2.waitKey(1)
