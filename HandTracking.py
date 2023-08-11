@@ -7,8 +7,9 @@ from cvzone.HandTrackingModule import HandDetector
 detector = HandDetector(detectionCon=0.8, maxHands=2)
 
 #while True:
-img=cv2.imread("TrainingData/A/a1.png", flags=cv2.IMREAD_COLOR)
-#img=cv2.resize(img, (400,400))
+img=cv2.imread("TrainingData/K/k22.png", flags=cv2.IMREAD_COLOR)
+# img=cv2.imread("TrainingData/D/d21.jpg")
+# img=cv2.resize(img, (400,400))
 #flags=cv2.IMREAD_COLOR
 hands, img=detector.findHands(img)
 #no draw -> hands = =detector.findHands(img, draw=False)
@@ -41,7 +42,7 @@ if hands:
     # print("A "+str(lmList1)+str(bbox1[3]/bbox1[2])+str(palmDist)+str(tipDist)+str(knuckleDist))
 
     f = open("Data.txt", "a")
-    f.write("A "+str(lmList1)+str(bbox1[3]/bbox1[2])+str(palmDist)+str(tipDist)+str(knuckleDist)+"\n")
+    f.write("K "+str(lmList1)+str(bbox1[3]/bbox1[2])+str(palmDist)+str(tipDist)+str(knuckleDist)+"\n")
     f.close()
 
     for i in range(21):
@@ -55,9 +56,9 @@ if hands:
             cv2.circle(img, (lmList1[i][0], lmList1[i][1]), 3, (0, 255, 255), cv2.FILLED)
         elif(i>16 and i<21):
             cv2.circle(img, (lmList1[i][0], lmList1[i][1]), 3, (20, 100, 50), cv2.FILLED)
-else:
-    f = open("Data.txt", "a")
-    f.write("no hand\n")
-    f.close()
+# else:
+#     f = open("Data.txt", "a")
+#     f.write("no hand\n")
+#     f.close()
 cv2.imshow("Image", img)
 cv2.waitKey(0)
