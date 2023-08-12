@@ -7,7 +7,7 @@ from cvzone.HandTrackingModule import HandDetector
 detector = HandDetector(detectionCon=0.8, maxHands=2)
 
 #while True:
-img=cv2.imread("TrainingData/U/u20.png", flags=cv2.IMREAD_COLOR)
+img=cv2.imread("TrainingData/Y/y22.png", flags=cv2.IMREAD_COLOR)
 # img=cv2.imread("TrainingData/D/d21.jpg")
 # img=cv2.resize(img, (400,400))
 #flags=cv2.IMREAD_COLOR
@@ -42,7 +42,7 @@ if hands:
     # print("A "+str(lmList1)+str(bbox1[3]/bbox1[2])+str(palmDist)+str(tipDist)+str(knuckleDist))
 
     f = open("Data.txt", "a")
-    f.write("U "+str(lmList1)+str(bbox1[3]/bbox1[2])+str(palmDist)+str(tipDist)+str(knuckleDist)+"\n")
+    f.write("Y "+str(lmList1)+str(bbox1[3]/bbox1[2])+str(palmDist)+str(tipDist)+str(knuckleDist)+"\n")
     f.close()
 
     for i in range(21):
