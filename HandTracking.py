@@ -7,8 +7,8 @@ from cvzone.HandTrackingModule import HandDetector
 detector = HandDetector(detectionCon=0.8, maxHands=2)
 
 #while True:
-img=cv2.imread("TrainingData/P/p19.png", flags=cv2.IMREAD_COLOR)
-# img=cv2.imread("TrainingData/D/d21.jpg")
+# img=cv2.imread("TrainingData/P/p19.png", flags=cv2.IMREAD_COLOR)
+img=cv2.imread("SamplePic6.jpg")
 # img=cv2.resize(img, (400,400))
 #flags=cv2.IMREAD_COLOR
 hands, img=detector.findHands(img)
@@ -22,24 +22,24 @@ if hands:
     centerPoint1=hand1["center"] #center of hand cx, cy
     handType1=hand1["type"] #left or right
     fingers1=detector.fingersUp(hand1)
-    # tipDist=[]
-    # palmDist=[]
-    # for i in range (1,5):
-    #     length, info, img = detector.findDistance(lmList1[4*i][0:2],lmList1[4*i+4][0:2], img)
-    #     tipDist.append(length)
-    #     length, info, img = detector.findDistance(lmList1[4*i][0:2],lmList1[0][0:2], img)
-    #     palmDist.append(length)
+    tipDist=[]
+    palmDist=[]
+    for i in range (1,5):
+        length, info, img = detector.findDistance(lmList1[4*i][0:2],lmList1[4*i+4][0:2], img)
+        tipDist.append(length)
+        length, info, img = detector.findDistance(lmList1[4*i][0:2],lmList1[0][0:2], img)
+        palmDist.append(length)
 
-    # length, info, img = detector.findDistance(lmList1[20][0:2],lmList1[0][0:2], img)
-    # palmDist.append(length)
-    # knuckleDist = []
-    # for i in range (1,6):
-    #     for j in range (4*i-3,4*i):
-    #         print(str(j)+" "+str(j+1))
-    #         length, info, img = detector.findDistance(lmList1[j][0:2],lmList1[j+1][0:2], img)
-    #         knuckleDist.append(length)
-    # print(fingers1)
-    # print("A "+str(lmList1)+str(bbox1[3]/bbox1[2])+str(palmDist)+str(tipDist)+str(knuckleDist))
+    length, info, img = detector.findDistance(lmList1[20][0:2],lmList1[0][0:2], img)
+    palmDist.append(length)
+    knuckleDist = []
+    for i in range (1,6):
+        for j in range (4*i-3,4*i):
+            print(str(j)+" "+str(j+1))
+            length, info, img = detector.findDistance(lmList1[j][0:2],lmList1[j+1][0:2], img)
+            knuckleDist.append(length)
+    print(fingers1)
+    print("A "+str(lmList1)+str(bbox1[3]/bbox1[2])+str(palmDist)+str(tipDist)+str(knuckleDist))
 
     # f = open("Data.txt", "a")
     # f.write("Y "+str(lmList1)+str(bbox1[3]/bbox1[2])+str(palmDist)+str(tipDist)+str(knuckleDist)+"\n")
