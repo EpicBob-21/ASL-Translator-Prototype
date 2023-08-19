@@ -10,14 +10,16 @@ labels = np.concatenate((label1, label0), dtype=int)
 # print(labels)
 
 #bring data in
-trainingData = []
+arr = []
 with open("Input.csv") as f:
     _ = next(f)  # skip header
     for line in csv.reader(f):
         temp = []
         for element in line:
             temp.append(float(element))
-        trainingData.append(temp)
+        arr.append(temp)
+
+trainingData = np.array(arr)
 
 # Train the SVM
 svm = cv.ml.SVM_create()
